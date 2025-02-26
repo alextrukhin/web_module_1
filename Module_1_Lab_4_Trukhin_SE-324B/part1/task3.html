@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Passport Data Form</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				max-width: 600px;
+				margin: 0 auto;
+				padding: 20px;
+				background-color: #f5f5f5;
+			}
+
+			h1 {
+				text-align: center;
+				color: #333;
+			}
+
+			form {
+				background-color: white;
+				padding: 20px;
+				border-radius: 8px;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			}
+
+			fieldset {
+				border: 1px solid #ddd;
+				padding: 15px;
+				margin-bottom: 20px;
+				border-radius: 4px;
+			}
+
+			legend {
+				padding: 0 10px;
+				font-weight: bold;
+				color: #555;
+			}
+
+			label {
+				display: block;
+				margin-bottom: 5px;
+				font-weight: bold;
+			}
+
+			input[type="text"],
+			input[type="number"],
+			textarea {
+				width: 100%;
+				padding: 8px;
+				margin-bottom: 15px;
+				border: 1px solid #ddd;
+				border-radius: 4px;
+				box-sizing: border-box;
+			}
+
+			input[type="file"] {
+				margin-bottom: 15px;
+			}
+
+			.photo-preview {
+				width: 150px;
+				height: 200px;
+				border: 1px dashed #aaa;
+				margin-top: 10px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				background-color: #f9f9f9;
+			}
+
+			.photo-preview img {
+				max-width: 100%;
+				max-height: 100%;
+				display: none;
+			}
+
+			button {
+				background-color: #4caf50;
+				color: white;
+				padding: 10px 15px;
+				border: none;
+				border-radius: 4px;
+				cursor: pointer;
+				font-size: 16px;
+			}
+
+			button:hover {
+				background-color: #45a049;
+			}
+
+			.form-buttons {
+				display: flex;
+				justify-content: space-between;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Passport Data Form</h1>
+
+		<form
+			action="http://example.com/submit-passport"
+			method="post"
+			enctype="multipart/form-data"
+		>
+			<fieldset>
+				<legend>Personal Information</legend>
+
+				<label for="lastName">Last Name:</label>
+				<input type="text" id="lastName" name="lastName" required />
+
+				<label for="firstName">First Name:</label>
+				<input type="text" id="firstName" name="firstName" required />
+
+				<label for="patronymic">Patronymic:</label>
+				<input type="text" id="patronymic" name="patronymic" />
+			</fieldset>
+
+			<fieldset>
+				<legend>Address Information</legend>
+
+				<label for="address">Address:</label>
+				<textarea
+					id="address"
+					name="address"
+					rows="3"
+					required
+				></textarea>
+			</fieldset>
+
+			<fieldset>
+				<legend>Identification</legend>
+
+				<label for="idNumber">Identification Number:</label>
+				<input
+					type="text"
+					id="idNumber"
+					name="idNumber"
+					pattern="[0-9]+"
+					title="Please enter numbers only"
+					required
+				/>
+			</fieldset>
+
+			<fieldset>
+				<legend>Photo</legend>
+
+				<label for="photo">Upload Photo:</label>
+				<input
+					type="file"
+					id="photo"
+					name="photo"
+					accept="image/*"
+					required
+				/>
+
+				<div class="photo-preview">
+					<span id="photoPlaceholder"
+						>Photo preview will appear here</span
+					>
+					<img id="photoPreview" src="#" alt="Photo preview" />
+				</div>
+			</fieldset>
+
+			<div class="form-buttons">
+				<button type="submit">Submit</button>
+				<button type="reset">Reset</button>
+			</div>
+		</form>
+
+		<script>
+			document
+				.getElementsByTagName("form")[0]
+				.addEventListener("reset", function (event) {
+					document.getElementById("photoPreview").style.display =
+						"none";
+					document.getElementById("photoPlaceholder").style.display =
+						"block";
+				});
+
+			document
+				.getElementById("photo")
+				.addEventListener("change", function (event) {
+					const file = event.target.files[0];
+					if (file) {
+						const reader = new FileReader();
+						reader.onload = function (e) {
+							const preview =
+								document.getElementById("photoPreview");
+							preview.src = e.target.result;
+							preview.style.display = "block";
+							document.getElementById(
+								"photoPlaceholder"
+							).style.display = "none";
+						};
+						reader.readAsDataURL(file);
+					} else {
+						document.getElementById("photoPreview").style.display =
+							"none";
+						document.getElementById(
+							"photoPlaceholder"
+						).style.display = "block";
+					}
+				});
+		</script>
+	</body>
+</html>

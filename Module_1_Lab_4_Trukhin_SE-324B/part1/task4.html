@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:xf="http://www.w3.org/2002/xforms"
+>
+	<head>
+		<title>Passport Data Form (XForm)</title>
+		<style type="text/css">
+			body {
+				font-family: Arial, sans-serif;
+				max-width: 600px;
+				margin: 0 auto;
+				padding: 20px;
+				background-color: #f5f5f5;
+			}
+
+			h1 {
+				text-align: center;
+				color: #333;
+			}
+
+			.xform-container {
+				background-color: white;
+				padding: 20px;
+				border-radius: 8px;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			}
+
+			.xform-group {
+				border: 1px solid #ddd;
+				padding: 15px;
+				margin-bottom: 20px;
+				border-radius: 4px;
+			}
+
+			.xform-group-title {
+				font-weight: bold;
+				color: #555;
+				margin-bottom: 10px;
+			}
+
+			.xform-caption {
+				display: block;
+				margin-bottom: 5px;
+				font-weight: bold;
+			}
+
+			.xform-control {
+				margin-bottom: 15px;
+			}
+		</style>
+
+		<xf:model id="passport-data">
+			<xf:instance id="passport-data-instance">
+				<passport xmlns="">
+					<lastName></lastName>
+					<firstName></firstName>
+					<patronymic></patronymic>
+					<address></address>
+					<idNumber></idNumber>
+					<photo></photo>
+				</passport>
+			</xf:instance>
+
+			<xf:submission
+				id="submit"
+				method="post"
+				action="http://example.com/submit-passport"
+				mediatype="multipart/form-data"
+			/>
+
+			<xf:bind nodeset="lastName" required="true()" />
+			<xf:bind nodeset="firstName" required="true()" />
+			<xf:bind nodeset="address" required="true()" />
+			<xf:bind
+				nodeset="idNumber"
+				required="true()"
+				type="xsd:string"
+				constraint="matches(., '^[0-9]+$')"
+			/>
+			<xf:bind nodeset="photo" required="true()" />
+		</xf:model>
+	</head>
+	<body>
+		<h1>Passport Data Form (XForm)</h1>
+
+		<div class="xform-container">
+			<div class="xform-group">
+				<div class="xform-group-title">Personal Information</div>
+
+				<div class="xform-control">
+					<xf:input ref="lastName">
+						<xf:label class="xform-caption">Last Name:</xf:label>
+						<xf:hint
+							>Enter your last name as it appears in your
+							passport</xf:hint
+						>
+						<xf:alert>Last name is required</xf:alert>
+					</xf:input>
+				</div>
+
+				<div class="xform-control">
+					<xf:input ref="firstName">
+						<xf:label class="xform-caption">First Name:</xf:label>
+						<xf:hint
+							>Enter your first name as it appears in your
+							passport</xf:hint
+						>
+						<xf:alert>First name is required</xf:alert>
+					</xf:input>
+				</div>
+
+				<div class="xform-control">
+					<xf:input ref="patronymic">
+						<xf:label class="xform-caption">Patronymic:</xf:label>
+						<xf:hint>Enter your patronymic if applicable</xf:hint>
+					</xf:input>
+				</div>
+			</div>
+
+			<div class="xform-group">
+				<div class="xform-group-title">Address Information</div>
+
+				<div class="xform-control">
+					<xf:textarea ref="address">
+						<xf:label class="xform-caption">Address:</xf:label>
+						<xf:hint>Enter your full residential address</xf:hint>
+						<xf:alert>Address is required</xf:alert>
+					</xf:textarea>
+				</div>
+			</div>
+
+			<div class="xform-group">
+				<div class="xform-group-title">Identification</div>
+
+				<div class="xform-control">
+					<xf:input ref="idNumber">
+						<xf:label class="xform-caption"
+							>Identification Number:</xf:label
+						>
+						<xf:hint
+							>Enter your identification number (numbers
+							only)</xf:hint
+						>
+						<xf:alert
+							>Identification number is required and must contain
+							only digits</xf:alert
+						>
+					</xf:input>
+				</div>
+			</div>
+
+			<div class="xform-group">
+				<div class="xform-group-title">Photo</div>
+
+				<div class="xform-control">
+					<xf:upload ref="photo" mediatype="image/*">
+						<xf:label class="xform-caption">Upload Photo:</xf:label>
+						<xf:hint>Upload a passport-sized photo</xf:hint>
+						<xf:alert>Photo is required</xf:alert>
+					</xf:upload>
+				</div>
+			</div>
+
+			<div class="form-buttons">
+				<xf:submit submission="submit">
+					<xf:label>Submit</xf:label>
+				</xf:submit>
+
+				<xf:reset>
+					<xf:label>Reset</xf:label>
+				</xf:reset>
+			</div>
+		</div>
+	</body>
+</html>
