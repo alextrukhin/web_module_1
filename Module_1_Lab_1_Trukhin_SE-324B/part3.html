@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Compass Image Map</title>
+		<style>
+			body {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				min-height: 100vh;
+				margin: 0;
+				padding: 20px;
+				font-family: Arial, sans-serif;
+			}
+			.compass-container {
+				text-align: center;
+			}
+			.compass-image {
+				border: none;
+				margin: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="compass-container">
+			<h1>Interactive Compass</h1>
+			<p>Click on any direction to see its representation</p>
+
+			<img
+				src="compass.png"
+				alt="Compass"
+				usemap="#compass-map"
+				class="compass-image"
+			/>
+
+			<map name="compass-map">
+				<!-- North - triangular area pointing up -->
+				<area
+					shape="rect"
+					coords="200,0,312,70"
+					href="https://placehold.co/800x600/blue/white?text=North"
+					alt="North"
+					target="_blank"
+					title="North"
+				/>
+
+				<!-- East - triangular area pointing right -->
+				<area
+					shape="rect"
+					coords="442,200,512,312"
+					href="https://placehold.co/800x600/red/white?text=East"
+					alt="East"
+					target="_blank"
+					title="East"
+				/>
+
+				<!-- South - triangular area pointing down -->
+				<area
+					shape="rect"
+					coords="200,442,312,512"
+					href="https://placehold.co/800x600/green/white?text=South"
+					alt="South"
+					target="_blank"
+					title="South"
+				/>
+
+				<!-- West - triangular area pointing left -->
+				<area
+					shape="rect"
+					coords="0,200,70,312"
+					href="https://placehold.co/800x600/yellow/black?text=West"
+					alt="West"
+					target="_blank"
+					title="West"
+				/>
+			</map>
+		</div>
+	</body>
+</html>

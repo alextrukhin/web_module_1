@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Lists and Links Example</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				line-height: 1.6;
+				margin: 0;
+				padding: 20px;
+				min-height: 150vh;
+			}
+			h1,
+			h2 {
+				color: #333;
+				border-bottom: 2px solid #333;
+				padding-bottom: 5px;
+			}
+			.lists-section,
+			.links-section {
+				margin-bottom: 40px;
+			}
+			dl dt {
+				font-weight: bold;
+				margin-top: 15px;
+			}
+			dl dd {
+				margin-left: 20px;
+				margin-bottom: 10px;
+			}
+			.back-to-top {
+				position: fixed;
+				bottom: 20px;
+				right: 20px;
+				background: #333;
+				color: white;
+				padding: 10px 15px;
+				text-decoration: none;
+				border-radius: 5px;
+			}
+			.back-to-top:hover {
+				background: #555;
+			}
+		</style>
+	</head>
+	<body>
+		<h1 id="top">Lists and Links Example</h1>
+
+		<div class="lists-section">
+			<h2>Lists</h2>
+
+			<h3>Unordered List - Fruits</h3>
+			<ul>
+				<li>Apple</li>
+				<li>Banana</li>
+				<li>Orange</li>
+				<li>Mango</li>
+				<li>Pineapple</li>
+			</ul>
+
+			<h3>Ordered List - Creating a New File in Microsoft Word</h3>
+			<ol>
+				<li>
+					Open Microsoft Word
+					<ol type="a">
+						<li>Click the Start menu</li>
+						<li>Find Microsoft Word in your programs</li>
+						<li>Click to launch the application</li>
+					</ol>
+				</li>
+				<li>
+					Create a new document
+					<ol type="a">
+						<li>Click "File" in the top menu</li>
+						<li>Select "New" from the left sidebar</li>
+						<li>Choose "Blank document"</li>
+					</ol>
+				</li>
+				<li>
+					Save the file
+					<ol type="a">
+						<li>Click "File" > "Save As"</li>
+						<li>Choose a location</li>
+						<li>Enter a file name</li>
+						<li>Click "Save"</li>
+					</ol>
+				</li>
+			</ol>
+
+			<h3>Definition List - Philosophy Terms</h3>
+			<dl>
+				<dt>Epistemology</dt>
+				<dd>
+					The theory of knowledge, especially with regard to its
+					methods, validity, and scope. It addresses questions about
+					how we know what we know.
+				</dd>
+
+				<dt>Metaphysics</dt>
+				<dd>
+					The branch of philosophy dealing with the first principles
+					of things, including abstract concepts such as being,
+					knowing, substance, cause, identity, time, and space.
+				</dd>
+
+				<dt>Ethics</dt>
+				<dd>
+					The branch of philosophy that involves systematizing,
+					defending, and recommending concepts of right and wrong
+					behavior.
+				</dd>
+
+				<dt>Logic</dt>
+				<dd>
+					The study of valid reasoning and argumentation, focusing on
+					the principles of valid inference and demonstration.
+				</dd>
+			</dl>
+		</div>
+
+		<div class="links-section">
+			<h2>Links</h2>
+
+			<h3>External Link</h3>
+			<p>
+				Visit
+				<a href="https://www.example.com" target="_blank">
+					Example.com
+				</a>
+				for more information.
+			</p>
+
+			<h3>Image Link</h3>
+			<p>Click the image to view full size:</p>
+			<a
+				href="https://placehold.co/400x300"
+				target="_blank"
+				rel="noopener"
+			>
+				<img
+					src="https://placehold.co/400x300"
+					alt="Sample image"
+					width="400"
+					height="300"
+				/>
+			</a>
+
+			<h3>Internal Link</h3>
+			<p>Go to <a href="#top">top of the page</a></p>
+		</div>
+
+		<a href="#top" class="back-to-top">↑ Back to Top</a>
+	</body>
+</html>

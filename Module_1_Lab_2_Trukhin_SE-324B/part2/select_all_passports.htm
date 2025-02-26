@@ -1,0 +1,16 @@
+<html>
+	<body>
+		<script type="text/vbscript">
+			set xmlDoc=CreateObject("Microsoft.XMLDOM")
+			xmlDoc.async="false"
+			xmlDoc.load("passports.xml")
+
+			set nodes=xmlDoc.selectNodes("//passport[photo[@type='svg']]/lastName")
+			for each x in nodes
+			  document.write("<xmp>")
+			  document.write(x.xml)
+			  document.write("</xmp>")
+			next
+		</script>
+	</body>
+</html>

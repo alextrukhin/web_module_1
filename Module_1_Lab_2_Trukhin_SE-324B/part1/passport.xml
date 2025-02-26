@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<!DOCTYPE passport SYSTEM "passport.dtd">
+<?xml-stylesheet type="text/css" href="passport.css"?>
+
+<passport>
+    <firstName>Oleksandr</firstName>
+    <lastName>Trukhin</lastName>
+    <patronymic>Vitaliiovych</patronymic>
+    <address>Brovary, Kharkivska street 44</address>
+    <idNumber>KB14298451</idNumber>
+    <photo>https://placehold.co/500</photo>
+</passport>

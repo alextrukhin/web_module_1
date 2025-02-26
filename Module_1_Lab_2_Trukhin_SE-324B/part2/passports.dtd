@@ -1,0 +1,17 @@
+<!-- Definition of the root element 'passports' -->
+<!ELEMENT passports (passport+)>
+
+<!-- Definition of passport element and its attributes -->
+<!ELEMENT passport (firstName, lastName, patronymic, address, idNumber, photo)>
+<!ATTLIST passport id CDATA #REQUIRED>
+
+<!-- Definition of simple elements -->
+<!ELEMENT firstName (#PCDATA)>
+<!ELEMENT lastName (#PCDATA)>
+<!ELEMENT patronymic (#PCDATA)>
+<!ELEMENT address (#PCDATA)>
+<!ELEMENT idNumber (#PCDATA)>
+
+<!-- Definition of photo element and its attributes -->
+<!ELEMENT photo (#PCDATA)>
+<!ATTLIST photo type (jpg|png|svg) #REQUIRED>

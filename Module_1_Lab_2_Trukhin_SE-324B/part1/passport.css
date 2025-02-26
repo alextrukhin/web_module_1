@@ -1,0 +1,55 @@
+passport {
+	display: block;
+	width: 80%;
+	margin: 20px auto;
+	padding: 20px;
+	background-color: #f5f5f5;
+	font-family: Arial, sans-serif;
+}
+
+firstName,
+lastName,
+patronymic,
+address,
+idNumber,
+photo {
+	display: block;
+	margin: 10px 0;
+	padding: 5px;
+}
+
+firstName {
+	color: #2c3e50;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+lastName {
+	color: #2c3e50;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+patronymic {
+	color: #34495e;
+	font-size: 16px;
+}
+
+address {
+	color: #7f8c8d;
+	font-style: italic;
+}
+
+idNumber {
+	color: #e74c3c;
+	font-family: monospace;
+	letter-spacing: 2px;
+}
+
+photo {
+	display: block;
+	margin: 15px 0;
+	padding: 10px;
+	border: 1px solid #bdc3c7;
+	background-color: #ecf0f1;
+}

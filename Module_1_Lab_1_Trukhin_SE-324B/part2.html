@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Colored Table</title>
+		<style>
+			table {
+				border-collapse: collapse;
+				width: 80%;
+				margin: 20px auto;
+			}
+			td {
+				border: 1px solid black;
+				padding: 10px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<table>
+			<tr bgcolor="green">
+				<td>First row, first cell</td>
+				<td>First row, second cell</td>
+				<td>First row, third cell</td>
+			</tr>
+			<tr bgcolor="black" style="color: white">
+				<td>Second row, first cell</td>
+				<td colspan="2">Merged cells in second row</td>
+			</tr>
+			<tr bgcolor="red">
+				<td>Third row, first cell</td>
+				<td>Third row, second cell</td>
+				<td>Third row, third cell</td>
+			</tr>
+		</table>
+	</body>
+</html>

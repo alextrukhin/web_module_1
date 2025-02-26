@@ -1,0 +1,9 @@
+<!DOCTYPE passport [
+  <!ELEMENT passport (firstName, lastName, patronymic, address, idNumber, photo)>
+  <!ELEMENT firstName (#PCDATA)>
+  <!ELEMENT lastName (#PCDATA)>
+  <!ELEMENT patronymic (#PCDATA)>
+  <!ELEMENT address (#PCDATA)>
+  <!ELEMENT idNumber (#PCDATA)>
+  <!ELEMENT photo (#PCDATA)>
+]>

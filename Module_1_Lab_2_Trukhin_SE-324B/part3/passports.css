@@ -1,0 +1,55 @@
+body {
+	font-family: Arial, sans-serif;
+	margin: 20px;
+	background-color: #f0f0f0;
+}
+
+h1 {
+	color: #333;
+	text-align: center;
+}
+
+.passports-container {
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.passport-card {
+	background-color: white;
+	border-radius: 8px;
+	padding: 20px;
+	margin: 20px 0;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.passport-card h2 {
+	color: #2c3e50;
+	border-bottom: 2px solid #3498db;
+	padding-bottom: 10px;
+}
+
+.passport-details {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 15px;
+}
+
+.personal-info {
+	flex: 2;
+}
+
+.photo-container {
+	flex: 1;
+	background-color: #f8f9fa;
+	padding: 10px;
+	border-radius: 4px;
+}
+
+strong {
+	color: #2c3e50;
+}
+
+p {
+	margin: 10px 0;
+	line-height: 1.5;
+}

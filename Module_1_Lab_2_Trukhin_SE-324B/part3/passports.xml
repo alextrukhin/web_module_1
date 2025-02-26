@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="passports.xsl"?>
+<!DOCTYPE passports SYSTEM "passports.dtd">
+
+<passports>
+    <passport id="1">
+        <firstName>Oleksandr</firstName>
+        <lastName>Trukhin</lastName>
+        <patronymic>Vitaliiovych</patronymic>
+        <address>Brovary, Kharkivska street 44</address>
+        <idNumber>KB14298451</idNumber>
+        <photo type="svg">https://placehold.co/500</photo>
+    </passport>
+    <passport id="2">
+        <firstName>Oleksandr2</firstName>
+        <lastName>Trukhin2</lastName>
+        <patronymic>Vitaliiovych2</patronymic>
+        <address>Brovary, Kharkivska street 45</address>
+        <idNumber>KB14298452</idNumber>
+        <photo type="svg">https://placehold.co/500</photo>
+    </passport>
+</passports>
