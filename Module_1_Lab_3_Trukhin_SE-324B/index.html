@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Mental Math Trainer</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				max-width: 800px;
+				margin: 0 auto;
+				padding: 20px;
+				text-align: center;
+				background-color: #f5f5f5;
+			}
+
+			h1 {
+				color: #333;
+				margin-bottom: 30px;
+			}
+
+			.level-select,
+			.operation-select {
+				margin: 20px 0;
+				background-color: white;
+				padding: 15px;
+				border-radius: 8px;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			}
+
+			.level-select button,
+			.operation-select button {
+				margin: 0 5px;
+				padding: 8px 12px;
+				background-color: #f0f0f0;
+				border: 1px solid #ccc;
+				border-radius: 4px;
+				cursor: pointer;
+				transition: all 0.2s;
+			}
+
+			.level-select button.active {
+				background-color: #4caf50;
+				color: white;
+				transform: scale(1.05);
+			}
+
+			.operation-select button {
+				width: 40px;
+				font-size: 18px;
+			}
+
+			.operation-select button.active {
+				background-color: #2196f3;
+				color: white;
+				transform: scale(1.05);
+			}
+
+			.calculation-area {
+				background-color: white;
+				padding: 20px;
+				border-radius: 8px;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+				margin: 20px 0;
+			}
+
+			.equation {
+				margin: 20px 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				font-size: 28px;
+			}
+
+			.equation input {
+				width: 60px;
+				height: 50px;
+				text-align: center;
+				font-size: 28px;
+				margin: 0 8px;
+				border: 1px solid #ccc;
+				border-radius: 4px;
+			}
+
+			.equation input:disabled {
+				background-color: #f9f9f9;
+				color: #333;
+			}
+
+			.equation span {
+				margin: 0 8px;
+				font-weight: bold;
+			}
+
+			#userAnswer {
+				width: 80px;
+				height: 50px;
+				text-align: center;
+				font-size: 28px;
+				margin: 0 8px;
+				border: 2px solid #4caf50;
+				border-radius: 4px;
+			}
+
+			.buttons-container {
+				display: flex;
+				justify-content: center;
+				gap: 10px;
+			}
+
+			#checkButton {
+				padding: 12px 24px;
+				background-color: #4caf50;
+				color: white;
+				border: none;
+				border-radius: 4px;
+				cursor: pointer;
+				font-size: 16px;
+				transition: background-color 0.2s;
+			}
+
+			#checkButton:hover {
+				background-color: #3e8e41;
+			}
+
+			.result {
+				margin: 20px 0;
+				font-size: 22px;
+				font-weight: bold;
+				min-height: 30px;
+			}
+
+			.correct {
+				color: #4caf50;
+			}
+
+			.incorrect {
+				color: #f44336;
+			}
+
+			#tryAgainButton {
+				padding: 12px 24px;
+				background-color: #2196f3;
+				color: white;
+				border: none;
+				border-radius: 4px;
+				cursor: pointer;
+				font-size: 16px;
+				transition: background-color 0.2s;
+			}
+
+			#tryAgainButton:hover {
+				background-color: #0b7dda;
+			}
+
+			.number-keyboard {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 8px;
+				max-width: 250px;
+				margin: 20px auto;
+				background-color: #e9e9e9;
+				padding: 15px;
+				border-radius: 8px;
+			}
+
+			.number-keyboard button {
+				padding: 12px;
+				font-size: 20px;
+				background-color: white;
+				border: 1px solid #ccc;
+				border-radius: 4px;
+				cursor: pointer;
+				transition: background-color 0.2s;
+			}
+
+			.number-keyboard button:hover {
+				background-color: #e0e0e0;
+			}
+
+			#backspaceButton,
+			#clearButton {
+				background-color: #ff9800;
+				color: white;
+			}
+
+			#backspaceButton:hover,
+			#clearButton:hover {
+				background-color: #e68a00;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Mental Math Trainer</h1>
+
+		<div class="level-select">
+			<h3>Select Level:</h3>
+			<button data-level="10" class="active">0-10</button>
+			<button data-level="20">0-20</button>
+			<button data-level="100">0-100</button>
+			<button data-level="150">0-150</button>
+		</div>
+
+		<div class="operation-select">
+			<h3>Select Operation:</h3>
+			<button data-operation="+" class="active">+</button>
+			<button data-operation="-">−</button>
+			<button data-operation="*">×</button>
+		</div>
+
+		<div class="calculation-area">
+			<form
+				id="mathForm"
+				onsubmit="event.preventDefault(); checkAnswer();"
+			>
+				<div class="equation">
+					<input type="text" id="operand1" disabled />
+					<input
+						type="text"
+						id="operation"
+						style="width: 40px"
+						disabled
+					/>
+					<input type="text" id="operand2" disabled />
+					<span>=</span>
+					<input type="number" id="userAnswer" />
+
+					<div class="buttons-container">
+						<button type="submit" id="checkButton">Check</button>
+						<button type="button" id="tryAgainButton">
+							Try Again
+						</button>
+					</div>
+				</div>
+
+				<div class="number-keyboard">
+					<button type="button" class="number-key">1</button>
+					<button type="button" class="number-key">2</button>
+					<button type="button" class="number-key">3</button>
+					<button type="button" class="number-key">4</button>
+					<button type="button" class="number-key">5</button>
+					<button type="button" class="number-key">6</button>
+					<button type="button" class="number-key">7</button>
+					<button type="button" class="number-key">8</button>
+					<button type="button" class="number-key">9</button>
+					<button type="button" class="number-key">0</button>
+					<button type="button" id="backspaceButton">⌫</button>
+					<button type="button" id="clearButton">C</button>
+				</div>
+			</form>
+
+			<div class="result" id="result"></div>
+		</div>
+
+		<script>
+			let currentLevel = 10;
+			let currentOperation = "+";
+			let correctAnswer = 0;
+
+			const getRandomNumber = () =>
+				Math.floor(Math.random() * (currentLevel + 1));
+
+			const generateEquation = () => {
+				let num1 = getRandomNumber();
+				let num2 = getRandomNumber();
+
+				if (currentOperation === "-" && num1 < num2) {
+					[num1, num2] = [num2, num1];
+				}
+
+				const operationSymbol = {
+					"+": "+",
+					"-": "−",
+					"*": "×",
+				}[currentOperation];
+
+				document.getElementById("operand1").value = num1;
+				document.getElementById("operation").value = operationSymbol;
+				document.getElementById("operand2").value = num2;
+				document.getElementById("userAnswer").value = "";
+
+				const resultElement = document.getElementById("result");
+				resultElement.textContent = "";
+				resultElement.className = "result";
+
+				const calculations = {
+					"+": (a, b) => a + b,
+					"-": (a, b) => a - b,
+					"*": (a, b) => a * b,
+				};
+
+				correctAnswer = calculations[currentOperation](num1, num2);
+				document.getElementById("userAnswer").focus();
+			};
+
+			const checkAnswer = () => {
+				const userAnswer = parseInt(
+					document.getElementById("userAnswer").value
+				);
+				const resultElement = document.getElementById("result");
+
+				if (isNaN(userAnswer)) {
+					resultElement.textContent = "Please enter a number!";
+					resultElement.className = "result incorrect";
+					return;
+				}
+
+				if (userAnswer === correctAnswer) {
+					resultElement.textContent = "Correct!";
+					resultElement.className = "result correct";
+				} else {
+					resultElement.textContent = `Miss! The correct answer is ${correctAnswer}`;
+					resultElement.className = "result incorrect";
+				}
+			};
+
+			generateEquation();
+
+			const levelButtons = document.querySelectorAll(
+				".level-select button"
+			);
+			levelButtons.forEach((button) => {
+				button.addEventListener("click", function () {
+					levelButtons.forEach((btn) =>
+						btn.classList.remove("active")
+					);
+					this.classList.add("active");
+					currentLevel = parseInt(this.getAttribute("data-level"));
+					generateEquation();
+				});
+			});
+
+			const operationButtons = document.querySelectorAll(
+				".operation-select button"
+			);
+			operationButtons.forEach((button) => {
+				button.addEventListener("click", function () {
+					operationButtons.forEach((btn) =>
+						btn.classList.remove("active")
+					);
+					this.classList.add("active");
+					currentOperation = this.getAttribute("data-operation");
+					generateEquation();
+				});
+			});
+
+			document
+				.getElementById("tryAgainButton")
+				.addEventListener("click", generateEquation);
+
+			document.querySelectorAll(".number-key").forEach((button) => {
+				button.addEventListener("click", function () {
+					const userAnswerInput =
+						document.getElementById("userAnswer");
+					userAnswerInput.value += this.textContent;
+					userAnswerInput.focus();
+				});
+			});
+
+			document
+				.getElementById("backspaceButton")
+				.addEventListener("click", () => {
+					const userAnswerInput =
+						document.getElementById("userAnswer");
+					userAnswerInput.value = userAnswerInput.value.slice(0, -1);
+					userAnswerInput.focus();
+				});
+
+			document
+				.getElementById("clearButton")
+				.addEventListener("click", () => {
+					const userAnswerInput =
+						document.getElementById("userAnswer");
+					userAnswerInput.value = "";
+					userAnswerInput.focus();
+				});
+
+			document
+				.getElementById("userAnswer")
+				.addEventListener("keyup", (event) => {
+					if (event.key === "Enter") {
+						checkAnswer();
+					}
+				});
+		</script>
+	</body>
+</html>
